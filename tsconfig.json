@@ -1,0 +1,21 @@
+{
+	"include": [
+		"./src",
+		"./tests"
+	],
+	"compilerOptions": {
+		"target": "es2016",
+		"moduleResolution": "node",
+		"noImplicitAny": true,
+		"sourceMap": true,
+		"outDir": "./dist",
+		"jsx": "react",
+		"baseUrl": "src",
+		"paths": {
+			"components/*": ["components/*"],
+			"containers/*": ["containers/*"],
+			"styles/*": ["styles/*"],
+			"util/*": ["util/*"]
+		}
+	}
+}
