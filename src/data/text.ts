@@ -61,3 +61,20 @@ export function readabilityIndex(str: string) {
 
 	return Lbar * L - Sbar * S - C;
 }
+
+export function makeKeywordRegex(keyword: Keyword) {
+	const r = keyword.replace(/\s/g, "\\s+");
+
+	return new RegExp(`${r}`, "gi");
+}
+
+export function highlightKeywordsInText(keywords: Keyword[], text: string) {
+	const rs = keywords
+		.map(makeKeywordRegex)
+		.map(r => r.source)
+		.join("|");
+
+	const highlighter = new RegExp(`(${rs})`, "gi");
+
+	return text.replace(highlighter, "<em>\$1</em>");
+}

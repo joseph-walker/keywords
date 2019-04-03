@@ -8,7 +8,8 @@ import { Pad } from "components/columns/Pad";
 
 function mapStateToProps(state: ReduxState) {
 	return {
-		value: state.text.value
+		value: state.text.value,
+		keywords: state.keywordTargeting.keywords
 	};
 }
 

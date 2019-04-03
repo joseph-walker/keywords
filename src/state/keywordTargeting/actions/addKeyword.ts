@@ -15,7 +15,8 @@ export function addKeyword(newKeyword: string): AddKeyword {
 	return {
 		type: AddKeywordActionTypes.AddKeyword,
 		newKeyword: newKeyword
-			.replace(/[^a-z ]/ig, "")
-			.toLowerCase()
+			.replace(/[^a-z ]/ig, "") // strip non-letters
+			.replace(/\s+/, " ") // compress multi-spaces
+			.toLowerCase() // no caps
 	};
 }

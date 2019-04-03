@@ -1,7 +1,7 @@
 import "mocha";
 import { expect } from "chai";
 
-import { countSentences, countWords, countCharacters, countLetters } from "data/text";
+import { countSentences, countWords, countCharacters, countLetters, makeKeywordRegex, highlightKeywordsInText } from "data/text";
 
 describe("Text Utilities", function () {
 	const testString = "I like turtles. Especially leatherbacks.";
@@ -40,6 +40,25 @@ describe("Text Utilities", function () {
 
 		it("should handle weird punctuation", function () {
 			expect(countLetters(weirdTest)).to.be.equal(38);
+		});
+	});
+
+	describe("makeKeywordRegex()", function () {
+		const keyword = "sell my car";
+
+		it("should create a regular expression from a string", function () {
+			expect(makeKeywordRegex(keyword)).to.be.deep.equal(/sell\s+my\s+car/gi)
+		});
+	})
+
+	describe("highlightKeywordsInText()", function () {
+		const keyword1 = "sell my car";
+		const keyword2 = "in seattle";
+
+		it("should wrap text in <em>s based on keywords passed in", function () {
+			const result = highlightKeywordsInText([keyword1, keyword2], "Learn how to sell my car in Seattle");
+
+			expect(result).to.be.equal("Learn how to <em>sell my car</em> <em>in Seattle</em>");
 		});
 	});
 });
