@@ -6,6 +6,13 @@ export interface TextStatistics {
 	readabilityIndex: number
 }
 
+export interface Keyword {
+	phrase: string,
+	count: number
+}
+
+export type KeywordList = Keyword[];
+
 export function buildTextStatistics(str: string): TextStatistics {
 	return {
 		wordCount: countWords(str),

@@ -1,9 +1,9 @@
 import * as React from "react";
 import { css } from "emotion";
 
-import { TextStatistics } from "data/text";
+import { TextStatistics, KeywordList } from "data/text";
 import { TextAnalysis } from "components/tools/TextAnalysis";
-import { KeywordTargeting, KeywordList } from "components/tools/KeywordTargeting";
+import { KeywordTargeting } from "components/tools/KeywordTargeting";
 
 const toolsPanelContainerStyles = css`
 	display: block;

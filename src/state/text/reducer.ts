@@ -20,7 +20,6 @@ export function textReducer(state: TextState = initialState, action: TextAction)
 			};
 		}
 		default: {
-			const unknownAction: never = action.type;
 			return state;
 		}
 	}

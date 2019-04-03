@@ -2,6 +2,7 @@ import * as React from "react";
 import { css } from "emotion";
 
 import { toolPanelContainerStyles, statsListStyles } from "styles/shared/toolsPanel";
+import { Keyword, KeywordList } from "data/text";
 
 const inputStyles = css`
 	display: flex;
@@ -80,13 +81,6 @@ const emptyStyle = css`
 	color: #999;
 	line-height: 26px;
 `;
-
-export interface Keyword {
-	phrase: string,
-	count: number
-}
-
-export type KeywordList = Keyword[];
 
 interface Props {
 	keywords: KeywordList
