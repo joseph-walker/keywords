@@ -16,7 +16,8 @@ const toolsPanelContainerStyles = css`
 interface Props {
 	textStatistics: TextStatistics,
 	keywords: EvaluatedKeywordList,
-	onAddKeyword: (newKeyword: string) => void
+	onAddKeyword: (newKeyword: string) => void,
+	onDeleteKeyword: (index: number) => void
 }
 
 export function ToolsPanel(props: Props) {
@@ -28,7 +29,8 @@ export function ToolsPanel(props: Props) {
 				readabilityIndex={props.textStatistics.readabilityIndex} />
 			<KeywordTargeting
 				keywords={props.keywords}
-				onAddKeyword={props.onAddKeyword} />
+				onAddKeyword={props.onAddKeyword}
+				onDeleteKeyword={props.onDeleteKeyword} />
 		</aside>
 	);
 }

@@ -1,3 +1,5 @@
+import { remove } from "ramda";
+
 import { KeywordList } from "data/text";
 import { AddKeywordAction, AddKeywordActionTypes } from "state/keywordTargeting/actions/addKeyword";
 import { DeleteKeywordAction, DeleteKeywordActionTypes } from "state/keywordTargeting/actions/deleteKeyword";
@@ -23,7 +25,10 @@ export function keywordReducer(state: KeywordState = initialState, action: Keywo
 			};
 		}
 		case DeleteKeywordActionTypes.DeleteKeyword: {
-			return state;
+			return {
+				...state,
+				keywords: remove(action.index, 1, state.keywords)
+			}
 		}
 		default: {
 			return state;

@@ -84,25 +84,27 @@ const emptyStyle = css`
 
 interface Props {
 	keywords: EvaluatedKeywordList,
-	onAddKeyword: (newKeyword: string) => void
+	onAddKeyword: (newKeyword: string) => void,
+	onDeleteKeyword: (index: number) => void
 }
 
-function keywordItem(k: EvaluatedKeyword) {
-	return (
-		<li className={keywordStyles}>
-			<div className="delete"><button>Delete</button></div>
-			<span>{k.keyword}</span>
-			<em>{k.count}</em>
-		</li>
-	);
-}
 
 export function KeywordTargeting(props: Props) {
 	const [newKeyword, setNewKeyword] = React.useState("");
 
-	const onClickAddKeyword = function() {
+	function onClickAddKeyword() {
 		props.onAddKeyword(newKeyword);
 		setNewKeyword("");
+	}
+
+	function keywordItem(k: EvaluatedKeyword, i: number) {
+		return (
+			<li className={keywordStyles} key={i}>
+				<div className="delete"><button onClick={() => props.onDeleteKeyword(i)}>Delete</button></div>
+				<span>{k.keyword}</span>
+				<em>{k.count}</em>
+			</li>
+		);
 	}
 
 	const keywordList = props.keywords.length
