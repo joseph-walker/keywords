@@ -23,5 +23,4 @@ printf '\e[1;32m%-6s\e[m\n' "Deploying to Github Pages..."
 git push -f origin gh-pages
 
 printf '\e[1;32m%-6s\e[m\n' "Deployment complete. Cleaning up..."
-mv ./index.html ./index-prod.html
-mv ./index-dev.html ./index.html
+git checkout master
