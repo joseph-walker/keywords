@@ -1,7 +1,7 @@
 import * as React from "react";
 import { css } from "emotion";
 
-import { TextStatistics, KeywordList } from "data/text";
+import { TextStatistics, EvaluatedKeywordList } from "data/text";
 import { TextAnalysis } from "components/tools/TextAnalysis";
 import { KeywordTargeting } from "components/tools/KeywordTargeting";
 
@@ -15,7 +15,8 @@ const toolsPanelContainerStyles = css`
 
 interface Props {
 	textStatistics: TextStatistics,
-	keywords: KeywordList
+	keywords: EvaluatedKeywordList,
+	onAddKeyword: (newKeyword: string) => void
 }
 
 export function ToolsPanel(props: Props) {
@@ -26,7 +27,8 @@ export function ToolsPanel(props: Props) {
 				characterCount={props.textStatistics.characterCount}
 				readabilityIndex={props.textStatistics.readabilityIndex} />
 			<KeywordTargeting
-				keywords={props.keywords} />
+				keywords={props.keywords}
+				onAddKeyword={props.onAddKeyword} />
 		</aside>
 	);
 }

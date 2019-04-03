@@ -1,6 +1,6 @@
 import { KeywordList } from "data/text";
-import { AddKeywordAction, AddKeywordActionTypes } from "state/keywords/actions/addKeyword";
-import { DeleteKeywordAction, DeleteKeywordActionTypes } from "state/keywords/actions/deleteKeyword";
+import { AddKeywordAction, AddKeywordActionTypes } from "state/keywordTargeting/actions/addKeyword";
+import { DeleteKeywordAction, DeleteKeywordActionTypes } from "state/keywordTargeting/actions/deleteKeyword";
 
 export type KeywordAction
 	= AddKeywordAction
@@ -14,10 +14,13 @@ const initialState = {
 	keywords: [] as KeywordList
 };
 
-export function textReducer(state: KeywordState = initialState, action: KeywordAction): KeywordState {
+export function keywordReducer(state: KeywordState = initialState, action: KeywordAction): KeywordState {
 	switch (action.type) {
 		case AddKeywordActionTypes.AddKeyword: {
-			return state;
+			return {
+				...state,
+				keywords: [...state.keywords, action.newKeyword]
+			};
 		}
 		case DeleteKeywordActionTypes.DeleteKeyword: {
 			return state;

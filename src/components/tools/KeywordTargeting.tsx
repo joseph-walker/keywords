@@ -2,7 +2,7 @@ import * as React from "react";
 import { css } from "emotion";
 
 import { toolPanelContainerStyles, statsListStyles } from "styles/shared/toolsPanel";
-import { Keyword, KeywordList } from "data/text";
+import { EvaluatedKeyword, EvaluatedKeywordList } from "data/text";
 
 const inputStyles = css`
 	display: flex;
@@ -83,26 +83,34 @@ const emptyStyle = css`
 `;
 
 interface Props {
-	keywords: KeywordList
+	keywords: EvaluatedKeywordList,
+	onAddKeyword: (newKeyword: string) => void
 }
 
-function keywordItem(k: Keyword) {
+function keywordItem(k: EvaluatedKeyword) {
 	return (
 		<li className={keywordStyles}>
 			<div className="delete"><button>Delete</button></div>
-			<span>{k.phrase}</span>
+			<span>{k.keyword}</span>
 			<em>{k.count}</em>
 		</li>
 	);
 }
 
 export function KeywordTargeting(props: Props) {
+	const [newKeyword, setNewKeyword] = React.useState("");
+
+	const onClickAddKeyword = function() {
+		props.onAddKeyword(newKeyword);
+		setNewKeyword("");
+	}
+
 	const keywordList = props.keywords.length
 		? (
 			<ul className={statsListStyles}>{props.keywords.map(keywordItem)}</ul>
 		)
 		: (
-			<div className={emptyStyle}>There"s nothing here</div>
+			<div className={emptyStyle}>There's nothing here</div>
 		);
 
 	return (
@@ -110,8 +118,12 @@ export function KeywordTargeting(props: Props) {
 			<header>
 				<h2>Keyword Targeting</h2>
 				<div className={inputStyles}>
-					<input type="text" placeholder="Create a Keyword Phrase..." />
-					<button>Add Keyword</button>
+					<input
+						type="text"
+						placeholder="Create a Keyword Phrase..."
+						value={newKeyword}
+						onChange={e => setNewKeyword(e.currentTarget.value) }/>
+					<button onClick={onClickAddKeyword}>Add Keyword</button>
 				</div>
 			</header>
 			<main>{keywordList}</main>

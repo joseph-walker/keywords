@@ -14,6 +14,8 @@ export type AddKeywordAction
 export function addKeyword(newKeyword: string): AddKeyword {
 	return {
 		type: AddKeywordActionTypes.AddKeyword,
-		newKeyword
+		newKeyword: newKeyword
+			.replace(/[^a-z ]/ig, "")
+			.toLowerCase()
 	};
 }
