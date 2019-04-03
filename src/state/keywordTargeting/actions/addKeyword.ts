@@ -12,6 +12,10 @@ export type AddKeywordAction
 	= AddKeyword;
 
 export function addKeyword(newKeyword: string): AddKeyword {
+	if (!newKeyword.length) {
+		return;
+	}
+
 	return {
 		type: AddKeywordActionTypes.AddKeyword,
 		newKeyword: newKeyword

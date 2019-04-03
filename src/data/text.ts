@@ -78,3 +78,25 @@ export function highlightKeywordsInText(keywords: Keyword[], text: string) {
 
 	return text.replace(highlighter, "<em>\$1</em>");
 }
+
+export function countKeywordOccurrences(keyword: Keyword, text: string) {
+	if (text === "") {
+		return 0;
+	}
+
+	const r = makeKeywordRegex(keyword);
+	const matches = text.match(r);
+
+	if (matches !== null) {
+		return matches.length;
+	} else {
+		return 0;
+	}
+}
+
+export const evaluateKeyword = (text: string) => (k: Keyword): EvaluatedKeyword => {
+	return {
+		keyword: k,
+		count: countKeywordOccurrences(k, text)
+	}
+}

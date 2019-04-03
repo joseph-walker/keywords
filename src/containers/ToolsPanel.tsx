@@ -1,17 +1,21 @@
+import { Dispatch } from "react";
 import { connect } from "react-redux";
 
 import { ReduxState } from "state/store";
-import { ToolsPanel } from "components/columns/ToolsPanel";
-import { buildTextStatistics, Keyword, EvaluatedKeywordList } from "data/text";
-import { Dispatch } from "react";
 import { KeywordAction } from "state/keywordTargeting/reducer";
 import { addKeyword } from "state/keywordTargeting/actions/addKeyword";
 import { deleteKeyword } from "state/keywordTargeting/actions/deleteKeyword";
+import { buildTextStatistics, evaluateKeyword } from "data/text";
+import { ToolsPanel } from "components/columns/ToolsPanel";
+
 
 function mapStateToProps(state: ReduxState) {
 	return {
 		textStatistics: buildTextStatistics(state.text.value),
-		keywords: state.keywordTargeting.keywords.map((k: Keyword) => ({ keyword: k, count: 0 })) as EvaluatedKeywordList, // TODO: Temp
+		keywords: state
+			.keywordTargeting
+			.keywords
+			.map(evaluateKeyword(state.text.value))
 	};
 }
 

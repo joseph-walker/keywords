@@ -30,6 +30,7 @@ const highlightOverlayStyles = css`
 	${canvasStyles}
 
 	color: transparent;
+	pointer-events: none;
 
 	& em {
 		display: inline;
