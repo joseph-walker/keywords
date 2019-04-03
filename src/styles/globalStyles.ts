@@ -1,4 +1,4 @@
-import { injectGlobal } from 'emotion';
+import { injectGlobal } from "emotion";
 
 injectGlobal`
 	* {
@@ -25,7 +25,7 @@ injectGlobal`
 	}
 	body {
 		display: block;
-		font-family: 'Roboto', sans-serif;
+		font-family: "Roboto", sans-serif;
 		color: #333;
 		font-size: 14px;
 	}
@@ -35,7 +35,7 @@ injectGlobal`
 	h4,
 	h5,
 	h6 {
-		font-family: 'Roboto', sans-serif;
+		font-family: "Roboto", sans-serif;
 		font-weight: bold;
 		display: block;
 	}

@@ -1,7 +1,7 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { toolPanelContainerStyles, statsListStyles } from 'styles/shared/toolsPanel';
-import { TextStatistics } from 'data/text';
+import { toolPanelContainerStyles, statsListStyles } from "styles/shared/toolsPanel";
+import { TextStatistics } from "data/text";
 
 interface Props extends TextStatistics {}
 
@@ -25,7 +25,7 @@ export function TextAnalysis(props: Props) {
 					</li>
 					<li>
 						<span>CLI Readability Index</span>
-						<em>{ri < 0 ? '-' : ri}</em>
+						<em>{ri < 0 ? "-" : ri}</em>
 					</li>
 				</ul>
 			</main>

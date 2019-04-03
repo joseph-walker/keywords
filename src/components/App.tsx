@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { css } from 'emotion';
+import * as React from "react";
+import { css } from "emotion";
 
-import { PadContainer } from 'containers/Pad';
-import { ToolsPanelContainer } from 'containers/ToolsPanel';
+import { PadContainer } from "containers/Pad";
+import { ToolsPanelContainer } from "containers/ToolsPanel";
 
 const appStyles = css`
 	display: flex;

@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { css } from 'emotion';
+import * as React from "react";
+import { css } from "emotion";
 
 const writingPadStyles = css`
 	display: block;
-	font-family: 'Crimson Text', serif;
+	font-family: "Crimson Text", serif;
 	font-size: 24px;
 	flex: 1;
 	height: 100%;

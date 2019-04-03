@@ -1,6 +1,6 @@
-import { combineReducers, createStore, compose } from 'redux';
+import { combineReducers, createStore, compose } from "redux";
 
-import { TextState, textReducer } from 'state/text/reducer';
+import { TextState, textReducer } from "state/text/reducer";
 
 // @ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

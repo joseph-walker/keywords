@@ -1,7 +1,7 @@
 import { Action } from "redux";
 
 export enum SetTextActionTypes {
-	SetText = '@@text/SET_TEXT'
+	SetText = "@@text/SET_TEXT"
 }
 
 interface SetText extends Action<SetTextActionTypes.SetText> {

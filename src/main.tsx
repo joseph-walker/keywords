@@ -1,11 +1,11 @@
-import 'styles/globalStyles';
+import "styles/globalStyles";
 
-import * as React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
+import * as React from "react";
+import { render } from "react-dom";
+import { Provider } from "react-redux";
 
-import { App } from 'components/App';
-import { store } from 'state/store';
+import { App } from "components/App";
+import { store } from "state/store";
 
 const app = (
 	<Provider store={store}>
@@ -13,4 +13,4 @@ const app = (
 	</Provider>
 );
 
-render(app, document.getElementById('app'));
+render(app, document.getElementById("app"));

@@ -1,4 +1,4 @@
-import { split } from 'sentence-splitter';
+import { split } from "sentence-splitter";
 
 export interface TextStatistics {
 	wordCount: number,
@@ -16,17 +16,17 @@ export function buildTextStatistics(str: string): TextStatistics {
 
 export function countSentences(str: string) {
 	return split(str)
-		.filter(n => n.type === 'Sentence')
+		.filter(n => n.type === "Sentence")
 		.length;
 }
 
 export function countWords(str: string) {
 	return str
-		.replace(/(^\s*)|(\s*$)/gi, '')
-		.replace(/[ ]{2,}/gi, ' ')
-		.replace(/\n /, '\n')
-		.split(' ')
-		.filter(s => s !== '')
+		.replace(/(^\s*)|(\s*$)/gi, "")
+		.replace(/[ ]{2,}/gi, " ")
+		.replace(/\n /, "\n")
+		.split(" ")
+		.filter(s => s !== "")
 		.length;
 }
 
@@ -36,7 +36,7 @@ export function countCharacters(str: string) {
 
 export function countLetters(str: string) {
 	return str
-		.replace(/[^a-z]/gi, '')
+		.replace(/[^a-z]/gi, "")
 		.length;
 }
 

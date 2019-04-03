@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { css } from 'emotion';
+import * as React from "react";
+import { css } from "emotion";
 
-import { toolPanelContainerStyles, statsListStyles } from 'styles/shared/toolsPanel';
+import { toolPanelContainerStyles, statsListStyles } from "styles/shared/toolsPanel";
 
 const inputStyles = css`
 	display: flex;
@@ -75,6 +75,12 @@ const keywordStyles = css`
 	}
 `;
 
+const emptyStyle = css`
+	text-align: center;
+	color: #999;
+	line-height: 26px;
+`;
+
 export interface Keyword {
 	phrase: string,
 	count: number
@@ -97,6 +103,14 @@ function keywordItem(k: Keyword) {
 }
 
 export function KeywordTargeting(props: Props) {
+	const keywordList = props.keywords.length
+		? (
+			<ul className={statsListStyles}>{props.keywords.map(keywordItem)}</ul>
+		)
+		: (
+			<div className={emptyStyle}>There"s nothing here</div>
+		);
+
 	return (
 		<section className={toolPanelContainerStyles}>
 			<header>
@@ -106,9 +120,7 @@ export function KeywordTargeting(props: Props) {
 					<button>Add Keyword</button>
 				</div>
 			</header>
-			<main>
-				<ul className={statsListStyles}>{props.keywords.map(keywordItem)}</ul>
-			</main>
+			<main>{keywordList}</main>
 		</section>
 	);
 }
