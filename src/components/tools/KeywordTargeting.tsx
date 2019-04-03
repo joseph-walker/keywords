@@ -75,7 +75,28 @@ const keywordStyles = css`
 	}
 `;
 
-export function KeywordTargeting() {
+export interface Keyword {
+	phrase: string,
+	count: number
+}
+
+export type KeywordList = Keyword[];
+
+interface Props {
+	keywords: KeywordList
+}
+
+function keywordItem(k: Keyword) {
+	return (
+		<li className={keywordStyles}>
+			<div className="delete"><button>Delete</button></div>
+			<span>{k.phrase}</span>
+			<em>{k.count}</em>
+		</li>
+	);
+}
+
+export function KeywordTargeting(props: Props) {
 	return (
 		<section className={toolPanelContainerStyles}>
 			<header>
@@ -86,13 +107,7 @@ export function KeywordTargeting() {
 				</div>
 			</header>
 			<main>
-				<ul className={statsListStyles}>
-					<li className={keywordStyles}>
-						<div className="delete"><button>Delete</button></div>
-						<span>Sell My Car</span>
-						<em>2</em>
-					</li>
-				</ul>
+				<ul className={statsListStyles}>{props.keywords.map(keywordItem)}</ul>
 			</main>
 		</section>
 	);

@@ -1,8 +1,13 @@
 import * as React from 'react';
 
 import { toolPanelContainerStyles, statsListStyles } from 'styles/shared/toolsPanel';
+import { TextStatistics } from 'data/text';
 
-export function TextAnalysis() {
+interface Props extends TextStatistics {}
+
+export function TextAnalysis(props: Props) {
+	const ri = Math.round(props.readabilityIndex);
+
 	return (
 		<section className={toolPanelContainerStyles}>
 			<header>
@@ -12,11 +17,15 @@ export function TextAnalysis() {
 				<ul className={statsListStyles}>
 					<li>
 						<span>Word Count</span>
-						<em>1327</em>
+						<em>{props.wordCount}</em>
 					</li>
 					<li>
 						<span>Character Count</span>
-						<em>3</em>
+						<em>{props.characterCount}</em>
+					</li>
+					<li>
+						<span>CLI Readability Index</span>
+						<em>{ri < 0 ? '-' : ri}</em>
 					</li>
 				</ul>
 			</main>

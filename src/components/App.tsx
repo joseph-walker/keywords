@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { css } from 'emotion';
 
-import { Pad } from 'components/Pad';
-import { ToolsPanel } from 'components/ToolsPanel';
+import { PadContainer } from 'containers/Pad';
 
 const appStyles = css`
 	display: flex;
@@ -10,12 +9,9 @@ const appStyles = css`
 `;
 
 export function App() {
-	const [text, setText] = React.useState('');
-
 	return (
 		<section className={appStyles}>
-			<Pad value={text} onChange={setText} />
-			<ToolsPanel />
+			<PadContainer />
 		</section>
 	)
 }

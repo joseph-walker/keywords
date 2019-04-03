@@ -15,7 +15,8 @@
 			"components/*": ["components/*"],
 			"containers/*": ["containers/*"],
 			"styles/*": ["styles/*"],
-			"util/*": ["util/*"]
+			"data/*": ["data/*"],
+			"redux/*": ["redux/*"]
 		}
 	}
 }

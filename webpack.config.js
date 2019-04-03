@@ -18,7 +18,8 @@ let config = {
 			components: srcPath('components'),
 			containers: srcPath('containers'),
 			styles: srcPath('styles'),
-			util: srcPath('util')
+			data: srcPath('data'),
+			state: srcPath('state')
 		}
 	},
 	module: {
