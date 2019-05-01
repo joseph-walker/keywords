@@ -97,6 +97,12 @@ export function KeywordTargeting(props: Props) {
 		setNewKeyword("");
 	}
 
+	function onEnterKey(e: React.KeyboardEvent) {
+		if (e.key === "Enter") {
+			onClickAddKeyword();
+		}
+	}
+
 	function keywordItem(k: EvaluatedKeyword, i: number) {
 		return (
 			<li className={keywordStyles} key={i}>
@@ -124,6 +130,7 @@ export function KeywordTargeting(props: Props) {
 						type="text"
 						placeholder="Create a Keyword Phrase..."
 						value={newKeyword}
+						onKeyDown={onEnterKey}
 						onChange={e => setNewKeyword(e.currentTarget.value) }/>
 					<button onClick={onClickAddKeyword}>Add Keyword</button>
 				</div>
