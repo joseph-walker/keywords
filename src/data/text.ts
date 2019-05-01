@@ -62,19 +62,24 @@ export function readabilityIndex(str: string) {
 	return Lbar * L - Sbar * S - C;
 }
 
-export function makeKeywordRegex(keyword: Keyword) {
-	const r = keyword.replace(/\s/g, "\\s+");
+function replaceSpacesForRegex(keyword: Keyword) {
+	return keyword.replace(/\s/g, "\\s+");
+}
 
-	return new RegExp(`${r}`, "gi");
+function wrapForWhitespace(rs: string) {
+	return `(?<=^|[^\\w])(${rs})(?=(?:$|[^\\w]))`
+}
+
+export function makeKeywordRegex(keyword: Keyword) {
+	return new RegExp(wrapForWhitespace(`(?:${replaceSpacesForRegex(keyword)})`), "gi");
 }
 
 export function highlightKeywordsInText(keywords: Keyword[], text: string) {
 	const rs = keywords
-		.map(makeKeywordRegex)
-		.map(r => r.source)
+		.map(replaceSpacesForRegex)
 		.join("|");
 
-	const highlighter = new RegExp(`(${rs})`, "gi");
+	const highlighter = new RegExp(wrapForWhitespace(rs), "gi");
 
 	return text.replace(highlighter, "<em>\$1</em>");
 }

@@ -44,10 +44,18 @@ describe("Text Utilities", function () {
 	});
 
 	describe("makeKeywordRegex()", function () {
-		const keyword = "sell my car";
+		const keyword = "sell";
 
-		it("should create a regular expression from a string", function () {
-			expect(makeKeywordRegex(keyword)).to.be.deep.equal(/sell\s+my\s+car/gi)
+		const positive = "I like to SeLl my car";
+		const negative = "I like turtles";
+		const falsePositive = "Tom Selleck stars in Magnum PI";
+
+		it("should create a regular expression that matches the keyword", function () {
+			const r = makeKeywordRegex(keyword);
+
+			expect(r.test(positive)).to.be.true;
+			expect(r.test(negative)).to.be.false;
+			expect(r.test(falsePositive)).to.be.false;
 		});
 	})
 
