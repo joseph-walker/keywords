@@ -88,7 +88,6 @@ interface Props {
 	onDeleteKeyword: (index: number) => void
 }
 
-
 export function KeywordTargeting(props: Props) {
 	const [newKeyword, setNewKeyword] = React.useState("");
 
